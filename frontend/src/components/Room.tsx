@@ -23,14 +23,21 @@ export const Room = ({
     localAudioTrack: MediaStreamTrack | null,
     localVideoTrack: MediaStreamTrack | null,
 }) => {
+    // @ts-ignore
     const [searchParams, setSearchParams] = useSearchParams();
-    const [lobby, setLobby] = useState(true);
+    // @ts-ignore
     const [socket, setSocket] = useState<null | Socket>(null);
+    // @ts-ignore
     const [sendingPc, setSendingPc] = useState<null | RTCPeerConnection>(null);
+    // @ts-ignore
     const [receivingPc, setReceivingPc] = useState<null | RTCPeerConnection>(null);
+    // @ts-ignore
     const [remoteVideoTrack, setRemoteVideoTrack] = useState<MediaStreamTrack | null>(null);
+    // @ts-ignore
     const [remoteAudioTrack, setRemoteAudioTrack] = useState<MediaStreamTrack | null>(null);
+    // @ts-ignore
     const [remoteMediaStream, setRemoteMediaStream] = useState<MediaStream | null>(null);
+    const [lobby, setLobby] = useState(true);
     const remoteVideoRef = useRef<HTMLVideoElement>(null);
     const localVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -93,6 +100,7 @@ export const Room = ({
             // trickle ice 
             setReceivingPc(pc);
             window.pcr = pc;
+            // @ts-ignore
             pc.ontrack = (e) => {
                 alert("ontrack");
                 // console.error("inside ontrack");
@@ -157,7 +165,8 @@ export const Room = ({
                 // //@ts-ignore
             }, 5000)
         });
-
+        
+        // @ts-ignore
         socket.on("answer", ({roomId, sdp: remoteSdp}) => {
             setLobby(false);
             setSendingPc(pc => {
