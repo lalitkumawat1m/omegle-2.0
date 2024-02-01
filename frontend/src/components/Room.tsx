@@ -218,7 +218,7 @@ export const Room = ({
     }, [lobby])
 
     return (
-      <div className='flex flex-col gap-5'>
+      <div className='flex flex-col gap-5 '>
         <Navbar />
         <Main name={name} remoteVideoRef={remoteVideoRef} localVideoRef={localVideoRef} />
         <Toaster />
